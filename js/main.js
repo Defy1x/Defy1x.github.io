@@ -6,7 +6,7 @@ Here's an exciting challenge: You'll be building a small weather app, using your
 
 ## Instructions
 
-#### Get an API Key for the OpenWeather API
+#### Get an API Key for the OpenWeather API --  DONE
 
 For this lab you'll be using the Open Weather Data API. In order to use it, please follow these steps:
 
@@ -26,7 +26,7 @@ https://api.openweathermap.org/data/2.5/weather?q=10010&appid=[PUT YOUR API KEY 
 https://api.openweathermap.org/data/2.5/weather?q=brooklyn&appid=[PUT YOUR API KEY HERE]
 ```
 
-#### ⚡️ Plan your implementation approach using pseudocode
+#### ⚡️ Plan your implementation approach using pseudocode -- DONE
 If you find the assignment too challenging to complete, you can bet the first place to check is your pseudocode!
 
 #### ⚡️ You need to make the following files to support the app:
@@ -66,6 +66,21 @@ Here are some zip codes / city names to test!
 
 * Read the Open Weather API documentation, the documentation contains code examples that helps you figure out how to use the API*/
 
+/*====== Psuedocode! BY CAS! <^^> =======
+  By default everything on the page is hidden except the form
+  When entering value form field will expand
+  on click (icon) form will get the value from input
+  API request is made based on the zipcode entered
+  If no value then do not make API request
+  On Function Date is created and added (without API)
+  City Name is added
+  Current temp is added
+  Min / Max temp is added
+  Status is added
+  Icon gets added
+  background changes
+*/
+
 
 $(document).ready(function() {
 
@@ -74,45 +89,38 @@ $(document).ready(function() {
   function hideURLbar(){ window.scrollTo(0,1);
 
   // create day and date
-  var mydate = new Date()
-  var year = mydate.getYear()
+  let mydate = new Date()
+  let year = mydate.getYear()
   if(year<1000)
   year+=1900
-  var day = mydate.getDay()
-  var month = mydate.getMonth()
-  var daym = mydate.getDate()
+  let day = mydate.getDay()
+  let month = mydate.getMonth()
+  let daym = mydate.getDate()
   if(daym < 10)
   daym ="0"+ daym
-  var dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
-  var montharray = new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+  let dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+  let montharray = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec")
 
   // add dates to html
   $('#day').text(""+dayarray[day]+"")
   $('#date').text(""+montharray[month]+" "+daym+" "+year+"")
 
-  //icons array
-  var icons = new Skycons({"color": "#fff"}),
+  // icons array
+  let icons = new Skycons({"color": "#fff"}),
+  // list  = [ "clear-night","clear-day", "partly-cloudy-day","partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind", "fog"], i;
   list  = [ "clear-night","clear-day", "partly-cloudy-day","partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind", "fog"], i;
   for(i = list.length; i--; )
   icons.set(list[i], list[i]);
   icons.play();
 
-  // add icons to html
-   $("#forecast-icons").owlCarousel({
-   autoPlay: 4000, //Set AutoPlay
-   items : 3,
-   itemsDesktop : [768,3],
-   itemsDesktopSmall : [414,4]
-  });
-
   //Animate search Bar
-  var searchField = $('#zip-code')
-  var icon = $('#search-btn')
+  let searchField = $('#zip-code')
+  let icon = $('#search-btn')
 
   // Focus Event Handler
   $(searchField).on('focus', function(){
     $(this).animate({
-      width:'65%'
+      width:'60%'
     },200);
     $(icon).animate({
       right:'5px'
@@ -131,16 +139,27 @@ $(document).ready(function() {
     }
   })
 
+  // prevent Default
   $('#search-form').submit(function(e){
       e.preventDefault()
   })
 
+  // grab value from form
   $('#search-btn').click((event) =>{
     event.preventDefault()
-    zip = $('#zip-code').val()
+    zip = $('#zip-code').val().toLowerCase()
     console.log(zip)
 
+  // if no value, exit
+    if (!zip){
+    return;
+    }
+
+  // parameter for call
     search(zip)
+
+  //clear form
+    $('#zip-code').val('')
     })
   }
 
@@ -157,10 +176,10 @@ $(document).ready(function() {
   .done((response) => {
     // execute this function if request is successful
     console.log(response)
-  //  displayResults(response.data)
+    displayResults(response.data)
   })
   .fail(() => {
     // execute this function if request fails
-    alert('error occurred')
+    alert('Please enter a valid zip code')
   })
 }

@@ -7,18 +7,13 @@
 	<meta name="keywords" content="Cas Responsive Weather App"/>
 
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
 	<link href="https:fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css">
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="js/main.js"></script>
-
-	<!-- additional JS plugins! -->
-	<script src="js/owl.carousel.js"></script>
 	<script src="js/skycons.js"></script>
 	</head>
 	<body>
-		<!-- main -->
 		<div class="container">
 			<h1>Weather Forecast</h1>
 			<div class="form-container">
@@ -29,47 +24,21 @@
 			</div>
 			<div class="main">
 				<div class="text-container">
-					<div class="date-container">
+					<h4 id="city">Las Vegas</h4>
 						<h2 id="day"></h2>
-						<h2 id="date"></h2>
-					</div>
+						<!-- <h2 id="date"></h2> -->
 						<h2 id="current-temp">24<span>°</span></h2>
 					<div class="min-max-container">
 						<h3 id="min-temp">21<span>°</span>F&nbsp;/&nbsp;</h3>
 						<h3 id="max-temp">30<span>°</span>F</h3>
 					</div>
-					<h4 id="city">Las Vegas</h4>
+
 					<h6 id="weather-status">Rain Falling</h6>
 				</div>
-				<div class="sliding-icons">
-					<div id="forecast-icons" class="owl-carousel owl-theme">
-						<div class="item agile-item">
-							<canvas id="sleet" width="40" height="40"></canvas>
-							<h6 id="forecast-day">Thr</h6>
-						</div>
-						<div class="item agile-item">
-							<canvas id="rain" width="40" height="40"></canvas>
-							<h6 id="forecast-day-1">Fri</h6>
-						</div>
-						<div class="item agile-item">
-							<canvas id="partly-cloudy-day" width="40" height="40"></canvas>
-							<h6 id="forecast-day-2">Sat</h6>
-						</div>
-						<div class="item agile-item">
-							<canvas id="cloudy" width="40" height="40"></canvas>
-							<h6 id="forecast-day-3">Sun</h6>
-						</div>
-						<div class="item agile-item">
-							<canvas id="clear-night" width="40" height="40"></canvas>
-							<h6 id="forecast-day-4">Mon</h6>
-						</div>
-						<div class="item agile-item">
-							<canvas id="clear-day" width="40" height="40"></canvas>
-							<h6 id="forecast-day-5">Tue</h6>
-						</div>
-						<div class="item agile-item">
-							<canvas id="partly-cloudy-night" width="40" height="40"></canvas>
-							<h6 id="forecast-day-6">Wed</h6>
+				<div class="weather-icon">
+					<div id="forecast">
+						<div class="status">
+							<canvas id="sleet" width="50" height="50"></canvas>
 						</div>
 					</div>
 				</div>
