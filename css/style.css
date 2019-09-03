@@ -139,6 +139,8 @@ vertical-align: middle;
 	filter:alpha(opacity=85);
 	opacity:0.85;
 	background:transparent url(../img/search-icon.png) top left no-repeat;
+  vertical-align: middle;
+  margin: 0;
 }
 
 #search-btn:hover{
