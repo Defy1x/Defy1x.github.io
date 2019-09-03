@@ -126,6 +126,7 @@ padding: 0px 2em;
 width: 35%;
 height: 60px;
 line-height: 60px;
+vertical-align: baseline;
 }
 
 #search-btn{
