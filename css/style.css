@@ -177,8 +177,8 @@ vertical-align: middle;
 
 .text-container h2 {
     font-size: 7em;
-    font-weight: 900;
-    color: rgba(255, 215, 1, 0.75);
+    font-weight: 600;
+    color: rgba(255, 215, 1, 0.80);
 }
 
 .text-container span {

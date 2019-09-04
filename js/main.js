@@ -45,7 +45,6 @@ $(document).ready(function() {
   function hideURLbar(){ window.scrollTo(0,1);
 
 
-
   //Animate search Bar
   let searchField = $('#zip-code')
   let icon = $('#search-btn')
@@ -143,6 +142,7 @@ $(document).ready(function() {
     `${weatherData.name},${weatherData.sys.country}`
   )
 
+// function declared for pulling in results once container is shown
   getWeatherStatus()
 
   // create functions for all different types of weather
@@ -151,6 +151,40 @@ $(document).ready(function() {
 
     //add status back to the html, no matter what the status
     $('#weather-status').text(status)
+
+    //convert Kelvin to Farenheit
+    function convertToF(kelvin) {
+
+    let celcius = kelvin - 273
+
+    let farenheit = celcius * (9/5) + 32
+
+    return Math.floor(farenheit)
+    }
+
+    // get Temps - currentTemp, minTemp, maxTemp
+    const currentTemp = convertToF(weatherData.main.temp)
+    console.log(currentTemp)
+
+    const maxTemp = convertToF(weatherData.main.temp_max)
+    console.log(maxTemp)
+
+    const minTemp = convertToF(weatherData.main.temp_min)
+    console.log(minTemp)
+
+    //Change current temp to red or blue
+    if (currentTemp < 40) {
+    $("#current-temp").css('color','rgba(34, 169, 239, 0.90)')
+  } if (currentTemp > 90) {
+    $("#current-temp").css('color','rgba(247, 62, 97, 0.90)')
+  } else if (currentTemp < 90 && currentTemp > 40) {
+    $("#current-temp").css('color','rgba(255, 215, 1, 0.80)')
+  }
+
+    //add back Temperatures back to HTML
+    $('#current-temp').html(`${currentTemp}°`)
+    $('#min-temp').html(`${minTemp}°F&nbsp;/&nbsp;`)
+    $('#max-temp').html(`${maxTemp}°F`)
 
 
   // BEGIN SWITCH STATEMENT FOR ICONS AND BACKGROUND
@@ -491,13 +525,7 @@ $(document).ready(function() {
     }
   //end display results
   }
-
-
-
-  // change from Kelvin to Fahrenheit
-  // add temperatures back to html - currentTemp, minTemp, maxTemp
-
 // end display weather data
-  }
+ }
 // end document ready
 }
