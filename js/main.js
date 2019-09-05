@@ -14,12 +14,6 @@
   Temp changes color if it below 40 degrees or above 90 degrees
 */
 
-/* whats left
-change temperature Kelvin to Farenheit
-change color to blue
-
-*/
-
 
 $(document).ready(function() {
   // icons array
