@@ -48,7 +48,7 @@ $(document).ready(function() {
   // Focus Event Handler
   $(searchField).on('focus', function(){
     $(this).animate({
-      width:'60%'
+      width:'55%'
     },200);
     $(icon).animate({
       right:'5px'
