@@ -2,7 +2,7 @@
   "name": "develop",
   "author": "Cas",
   "version": "0.1.0",
-  "homepage": "https://defy1x.github.io/c18-react-portfolio/",
+  "homepage": "https://defy1x.github.io/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.4.3",
